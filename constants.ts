@@ -5,51 +5,69 @@ export const DISEASES: Record<LeukodystrophyType, DiseaseData> = {
   [LeukodystrophyType.GENERAL]: {
     id: LeukodystrophyType.GENERAL,
     name: 'General',
-    fullName: 'Definición de Leucodistrofias',
+    fullName: 'Clasificación de las Enfermedades de Sustancia Blanca',
     color: '#6366f1',
-    genetics: "Trastornos genéticos heterogéneos (más de 50 tipos identificados) que afectan principalmente la formación, mantenimiento o integridad de la mielina en el SNC.",
-    riskFactors: "Principalmente herencia autosómica recesiva, ligada al X o mutaciones de novo. La consanguinidad es un factor de riesgo en formas recesivas.",
-    biomarkers: "Dependen del tipo: Enzimas lisosomales, ácidos grasos, análisis de ADN y espectroscopia por RMN.",
-    historyBase: "Grupo de enfermedades raras caracterizadas por un declive motor y cognitivo progresivo en pacientes previamente sanos, debido a la degeneración de la sustancia blanca.",
+    genetics: "Trastornos monogénicos que afectan primariamente la mielina del SNC. Clasificación: Hipomielinizantes (defecto de formación) vs Desmielinizantes (destrucción).",
+    molecularMechanism: "La homeostasis de la mielina depende de lípidos (colesterol, galactocerebrósido) y proteínas (PLP1, MBP). Los defectos pueden ser lisosomales, peroxisomales o mitocondriales.",
+    riskFactors: "Herencia ligada al X (ALD/PMD) y Autosómica Recesiva (MLD/Krabbe). La incidencia global es de 1 en 7,600 nacidos vivos.",
+    biomarkers: "Espectroscopia (reducción de NAA, elevación de lactato/colina), Enzimas lisosomales (ARSA, GALC), VLCFA.",
+    historyBase: "Deterioro neurológico progresivo en un paciente con desarrollo previo normal o casi normal.",
     warningSigns: [
-      "Regresión de hitos del desarrollo motor.",
-      "Cambios inexplicables en el tono muscular (hipotonía/espasticidad).",
-      "Disfunción visual o auditiva de origen central.",
-      "Convulsiones o deterioro cognitivo progresivo."
+      "Regresión motora inexplicada.",
+      "Nystagmus de inicio temprano.",
+      "Disfunción bulbar.",
+      "Falla adrenal (en varones)."
     ],
-    complications: [
-      "Inmovilidad total y contracturas.",
-      "Pérdida de funciones bulbares (deglución).",
-      "Fallo multiorgánico o respiratorio.",
-      "Afectación del sistema nervioso periférico en tipos específicos."
+    complications: ["Inmovilidad catastrófica", "Disfagia", "Insuficiencia respiratoria central"],
+    treatment: "Multidisciplinario: HSCT, Terapia Génica, Soporte Paliativo.",
+    prognosis: "Variable según el tipo molecular.",
+    differential: ["Parálisis cerebral", "Encefalomielitis Diseminada Aguda (ADEM)", "Leucoencefalopatía hipóxico-isquémica"],
+    references: [
+      { source: "GeneReviews", title: "Leukodystrophy Overview", url: "https://www.ncbi.nlm.nih.gov/books/NBK1116/" },
+      { source: "Radiopaedia", title: "Leukodystrophies (Radiology Guide)", url: "https://radiopaedia.org/articles/leukodystrophies" }
     ],
-    treatment: "Multidisciplinario. Varía desde el manejo de soporte hasta intervenciones curativas como el trasplante de células madre (HSCT) o terapia génica en fases tempranas.",
-    prognosis: "Generalmente progresivo y fatal, aunque la velocidad de declive varía ampliamente según el defecto genético y la edad de inicio.",
-    differential: ["Parálisis cerebral atípica", "Secuelas de hipoxia-isquemia", "Infecciones TORCH", "Errores innatos del metabolismo"],
     stages: [
       {
-        timeLabel: "Clasificación I",
-        symptoms: "Leucodistrofias Desmielinizantes: La mielina se forma pero se destruye (Ej. X-ALD, MLD, Krabbe).",
-        physicalExam: "Suelen presentar una fase inicial de desarrollo normal seguida de regresión rápida.",
-        mriDetails: "Pérdida de señal de mielina en secuencias T1 y T2 de forma confluente.",
-        clinicalStatus: "Enfoque en diagnóstico diferencial bioquímico.",
-        pathophysiology: "Acumulación de metabolitos tóxicos que inducen apoptosis de oligodendrocitos."
+        timeLabel: "Introducción",
+        symptoms: "Sospecha ante regresión de hitos del desarrollo.",
+        physicalExam: "Evaluación de vía piramidal y signos cerebelosos.",
+        mriDetails: "T1 vs T2 para diferenciar hipomielinización.",
+        clinicalStatus: "Estado pre-diagnóstico.",
+        pathophysiology: "Deterioro de la conducción saltatoria axonal.",
+        neuroExamDetail: {
+          mentalStatus: "Alerta, posible irritabilidad inicial.",
+          cranialNerves: "Fondo de ojo normal inicialmente.",
+          motorSystem: "Tono normal o leve hipotonía axial.",
+          reflexes: "Normoreflexia."
+        }
       },
       {
-        timeLabel: "Clasificación II",
-        symptoms: "Leucodistrofias Hipomielinizantes: El cerebro nunca logra fabricar suficiente mielina (Ej. PMD).",
-        physicalExam: "Suelen presentarse desde el nacimiento o lactancia temprana con nystagmus y retraso.",
-        mriDetails: "Déficit persistente de mielinización en estudios seriados (T1 isointenso).",
-        clinicalStatus: "Enfoque en soporte vital y rehabilitación.",
-        pathophysiology: "Defectos estructurales en proteínas de membrana de la mielina."
+        timeLabel: "Desmielinización",
+        symptoms: "Pérdida de habilidades adquiridas.",
+        physicalExam: "Espasticidad y signos de neurona motora superior.",
+        mriDetails: "Hiperintensidad T2 confluente progresiva.",
+        clinicalStatus: "Fase degenerativa activa.",
+        pathophysiology: "Inflamación mediada por macrófagos y citotoxicidad.",
+        neuroExamDetail: {
+          mentalStatus: "Deterioro cognitivo progresivo.",
+          cranialNerves: "Posible atrofia óptica.",
+          motorSystem: "Espasticidad, tijereteo al caminar.",
+          reflexes: "Hiperreflexia, Babinski positivo."
+        }
       },
       {
-        timeLabel: "Diagnóstico",
-        symptoms: "Algoritmo Diagnóstico: RMN de alta resolución -> Pruebas Bioquímicas -> Secuenciación Genética.",
-        physicalExam: "Evaluación exhaustiva de reflejos, fondo de ojo y función cognitiva.",
-        mriDetails: "La distribución de la lesión (anterior vs posterior) orienta al tipo específico.",
-        clinicalStatus: "Importancia del Tamiz Neonatal para intervención pre-sintomática.",
-        pathophysiology: "Deterioro de la conducción nerviosa por pérdida de aislamiento axonal."
+        timeLabel: "Hipomielinización",
+        symptoms: "Déficit motor desde el nacimiento o lactancia.",
+        physicalExam: "Nystagmus y debilidad axial severa.",
+        mriDetails: "T2 isointenso a levemente hiperintenso persistente.",
+        clinicalStatus: "Fase estática pero con complicaciones ortopédicas.",
+        pathophysiology: "Falla en la diferenciación del oligodendrocito.",
+        neuroExamDetail: {
+          mentalStatus: "Desarrollo cognitivo lento.",
+          cranialNerves: "Nystagmus pendular.",
+          motorSystem: "Hipotonía axial marcada.",
+          reflexes: "Variables, usualmente exaltados."
+        }
       }
     ]
   },
@@ -58,49 +76,62 @@ export const DISEASES: Record<LeukodystrophyType, DiseaseData> = {
     name: 'X-ALD',
     fullName: 'Adrenoleucodistrofia Ligada al X',
     color: '#ef4444',
-    genetics: "Mutación en el gen ABCD1 (Xq28). Defecto en la proteína ALDP del peroxisoma.",
-    riskFactors: "Herencia ligada al X. Antecedentes de insuficiencia suprarrenal en varones.",
-    biomarkers: "VLCFA elevados en plasma. ACTH elevada.",
-    historyBase: "Varón (4-10 años) con cambios de conducta, TDAH de inicio nuevo e hiperpigmentación cutánea.",
-    warningSigns: [
-      "Hiperpigmentación en encías/cicatrices.",
-      "Deterioro escolar abrupto.",
-      "Agnosia auditiva.",
-      "Crisis Addisoniana."
+    genetics: "Mutación en el gen ABCD1 (Xq28). Defecto en la proteína ALDP (transportador peroxisomal).",
+    molecularMechanism: "Falla en el transporte de VLCFA al interior del peroxisoma para su β-oxidación, resultando en su acumulación citotóxica en tejidos cerebrales y adrenales.",
+    riskFactors: "Herencia ligada al cromosoma X. 1 de cada 20,000 varones.",
+    biomarkers: "Niveles elevados de VLCFA (C26:0, C26:0/C22:0 ratio). ACTH elevada por falla adrenal.",
+    historyBase: "Varón de 4-10 años con cambios de conducta, deterioro académico y signos de insuficiencia suprarrenal.",
+    warningSigns: ["Hiperpigmentación de mucosas", "Deterioro escolar", "Agnosia auditiva", "Pérdida de visión periférica"],
+    complications: ["Crisis suprarrenal aguda", "Estado vegetativo", "Ceguera cortical"],
+    treatment: "Trasplante de Células Hematopoyéticas (HSCT) en estadios tempranos (Loes < 9). Terapia génica (Elivaldogene autotemcel).",
+    prognosis: "Fase cerebral: Supervivencia media de 2-4 años tras inicio si no hay trasplante.",
+    differential: ["TDAH", "Esclerosis Múltiple infantil", "Infecciones del SNC"],
+    references: [
+      { source: "GeneReviews", title: "X-Linked Adrenoleukodystrophy", url: "https://www.ncbi.nlm.nih.gov/books/NBK1315/" },
+      { source: "Radiopaedia", title: "X-linked adrenoleukodystrophy (Imaging)", url: "https://radiopaedia.org/articles/x-linked-adrenoleukodystrophy" }
     ],
-    complications: [
-      "Ceguera cortical.",
-      "Disfagia severa.",
-      "Estado vegetativo.",
-      "Neumonías recurrentes."
-    ],
-    treatment: "HSCT (Trasplante) en fase temprana (Loes < 4). Terapia génica. Reemplazo de corticoides.",
-    prognosis: "Fase cerebral: Fatal en 2-5 años sin tratamiento. Pronóstico excelente con trasplante pre-sintomático.",
-    differential: ["TDAH", "Esclerosis Múltiple", "Addison idiopático"],
     stages: [
       {
-        timeLabel: "Fase Inicial",
-        symptoms: "Dificultades de atención, errores en procesamiento auditivo.",
-        physicalExam: "Hiperpigmentación cutánea marcada, reflejos exaltados.",
+        timeLabel: "Inicio Cerebral",
+        symptoms: "Dificultad de aprendizaje, cambios de personalidad.",
+        physicalExam: "Hiperpigmentación en encías, reflejos exaltados.",
         mriDetails: "Hiperintensidad T2 en esplenio y radiaciones ópticas.",
-        clinicalStatus: "Ventana ideal para trasplante curativo.",
-        pathophysiology: "Neuroinflamación desmielinizante masiva mediada por microglía."
+        clinicalStatus: "Ventana terapéutica crítica (Loes 1-4).",
+        pathophysiology: "Desmielinización inflamatoria perivenular masiva.",
+        neuroExamDetail: {
+          mentalStatus: "Distraibilidad, labilidad emocional.",
+          cranialNerves: "Visión normal, pero dificultad en procesamiento auditivo central.",
+          motorSystem: "Coordinación fina levemente alterada.",
+          reflexes: "Hiperreflexia patelar bilateral."
+        }
       },
       {
-        timeLabel: "Fase Moderada",
+        timeLabel: "Progresión Inflamatoria",
         symptoms: "Pérdida de visión, ataxia, convulsiones.",
-        physicalExam: "Tetraparesia espástica, signo de Babinski bilateral.",
-        mriDetails: "Realce con gadolinio periférico (ruptura de BHE).",
-        clinicalStatus: "Progresión activa, alto riesgo terapéutico.",
-        pathophysiology: "Cascada inflamatoria que destruye la barrera hematoencefálica."
+        physicalExam: "Marcha atáxica-espástica, atrofia óptica inicial.",
+        mriDetails: "Realce con contraste (gadolinio) en el frente de progresión.",
+        clinicalStatus: "Fase inflamatoria aguda (Loes 5-10).",
+        pathophysiology: "Ruptura de la barrera hematoencefálica mediada por VLCFA.",
+        neuroExamDetail: {
+          mentalStatus: "Desorientación, demencia progresiva.",
+          cranialNerves: "Reducción de agudeza visual, palidez papilar.",
+          motorSystem: "Hemiparesia o cuadriparesia espástica.",
+          reflexes: "Babinski bilateral, clonus rotuliano."
+        }
       },
       {
-        timeLabel: "Fase Avanzada",
-        symptoms: "Mutismo, cuadriplejía, incapacidad de comunicación.",
-        physicalExam: "Rigidez de descerebración, atrofia óptica.",
-        mriDetails: "Atrofia masiva y cavitación posterior.",
-        clinicalStatus: "Cuidados paliativos.",
-        pathophysiology: "Pérdida axonal total y gliosis cicatricial."
+        timeLabel: "Estadio Terminal",
+        symptoms: "Estado vegetativo, mutismo acinético.",
+        physicalExam: "Cuadriplejía, rigidez de descerebración.",
+        mriDetails: "Atrofia cerebral masiva y cavitación posterior.",
+        clinicalStatus: "Loes > 15. Cuidados paliativos.",
+        pathophysiology: "Muerte oligodendrocítica total y gliosis.",
+        neuroExamDetail: {
+          mentalStatus: "Sin respuesta a estímulos externos.",
+          cranialNerves: "Ceguera total, ausencia de reflejo de amenaza.",
+          motorSystem: "Rigidez intensa, contracturas fijas.",
+          reflexes: "Hiperreflexia extrema o arreflexia terminal."
+        }
       }
     ]
   },
@@ -109,49 +140,62 @@ export const DISEASES: Record<LeukodystrophyType, DiseaseData> = {
     name: 'Krabbe',
     fullName: 'Leucodistrofia de Células Globoides',
     color: '#3b82f6',
-    genetics: "Deficiencia de Galactocerebrosidasa (GALC) en 14q31. Autosómica recesiva.",
-    riskFactors: "Consanguinidad. Muertes infantiles tempranas previas en la familia.",
-    biomarkers: "Psicosina elevada en sangre. Actividad de GALC < 5%.",
-    historyBase: "Lactante (3-6 meses) con llanto inconsolable, irritabilidad extrema y arqueo tónico.",
-    warningSigns: [
-      "Hipersensibilidad sensorial.",
-      "Opistótonos (arqueo del tronco).",
-      "Pérdida de hitos motores.",
-      "Fiebres inexplicables."
+    genetics: "Deficiencia de la enzima Galactocerebrosidasa (GALC) en 14q31. Autosómica recesiva.",
+    molecularMechanism: "La acumulación de galactosil-esfingosina (psicosina) es citotóxica para los oligodendrocitos. Los macrófagos ingieren mielina no degradada y se convierten en células globoides.",
+    riskFactors: "Incidencia 1 en 100,000 nacimientos.",
+    biomarkers: "Psicosina elevada (> 10 nmol/L). Actividad enzimática GALC baja en leucocitos.",
+    historyBase: "Lactante previamente sano que inicia con irritabilidad extrema y estancamiento del desarrollo.",
+    warningSigns: ["Irritabilidad extrema (llanto inconsolable)", "Hipersensibilidad sensorial", "Opistótonos", "Fiebres inexplicables"],
+    complications: ["Disfagia severa", "Insuficiencia respiratoria", "Ceguera"],
+    treatment: "HSCT solo si se realiza antes de los 30 días de vida (pre-sintomático).",
+    prognosis: "Forma infantil: Muerte usualmente antes de los 2-3 años.",
+    differential: ["Parálisis cerebral discinética", "Enfermedad de Canavan", "Aciduria glutárica tipo I"],
+    references: [
+      { source: "GeneReviews", title: "Krabbe Disease", url: "https://www.ncbi.nlm.nih.gov/books/NBK1238/" },
+      { source: "PubMed", title: "Psychosine as a biomarker", url: "https://pubmed.ncbi.nlm.nih.gov/28595856/" }
     ],
-    complications: [
-      "Disfunción bulbar.",
-      "Desnutrición severa.",
-      "Estatus epiléptico.",
-      "Insuficiencia respiratoria."
-    ],
-    treatment: "HSCT solo en recién nacidos pre-sintomáticos (< 30 días). Paliativo tras inicio de síntomas.",
-    prognosis: "Forma infantil: Muerte antes de los 2 años. Formas tardías: Progresión motora lenta.",
-    differential: ["Parálisis cerebral", "Enfermedad de Canavan", "Reflujo severo"],
     stages: [
       {
-        timeLabel: "Estadio I",
-        symptoms: "Irritabilidad severa, dificultades de alimentación.",
-        physicalExam: "Hipotonía axial con hipertonía distal.",
-        mriDetails: "Afectación de cápsula interna y tractos descendentes.",
-        clinicalStatus: "Fase de sospecha clínica crucial.",
-        pathophysiology: "Acumulación de Psicosina neurotóxica."
+        timeLabel: "Estadio I (Agudo)",
+        symptoms: "Hiperestesia, llanto al tacto, rigidez.",
+        physicalExam: "Pulgares adducidos, hipotonía axial.",
+        mriDetails: "Hiperintensidad en cápsula interna y tractos corticoespinales.",
+        clinicalStatus: "Sospecha diagnóstica inicial.",
+        pathophysiology: "Acumulación aguda de psicosina neurotóxica.",
+        neuroExamDetail: {
+          mentalStatus: "Irritabilidad extrema, hiperexcitabilidad.",
+          cranialNerves: "Normales.",
+          motorSystem: "Tono fluctuante, tendencia al arqueo.",
+          reflexes: "Exaltados."
+        }
       },
       {
         timeLabel: "Estadio II",
-        symptoms: "Regresión total, ceguera, sordera.",
-        physicalExam: "Rigidez intensa, atrofia óptica, nystagmus.",
-        mriDetails: "Señal hipointensa en tálamos en T2.",
-        clinicalStatus: "Deterioro neurológico profundo.",
-        pathophysiology: "Infiltración de macrófagos (Células Globoides)."
+        symptoms: "Regresión motora franca, opistótonos frecuente.",
+        physicalExam: "Rigidez marcada, nystagmus, atrofia óptica.",
+        mriDetails: "Hipointensidad en tálamos en secuencias T2.",
+        clinicalStatus: "Deterioro neurológico severo.",
+        pathophysiology: "Infiltración masiva de células globoides multinucleadas.",
+        neuroExamDetail: {
+          mentalStatus: "Pérdida de contacto visual y sonrisa social.",
+          cranialNerves: "Atrofia óptica, respuesta lenta a la luz.",
+          motorSystem: "Hipertonía espástica severa.",
+          reflexes: "Hiperreflexia, clonus agotable."
+        }
       },
       {
         timeLabel: "Estadio III",
-        symptoms: "Estado vegetativo, ausencia de respuesta.",
-        physicalExam: "Posturas fijas, ausencia de reflejos bulbares.",
-        mriDetails: "Atrofia cerebral y cerebelosa global.",
-        clinicalStatus: "Soporte paliativo terminal.",
-        pathophysiology: "Gliosis total y destrucción de la arquitectura blanca."
+        symptoms: "Ausencia de movimientos voluntarios.",
+        physicalExam: "Estado vegetativo, ceguera y sordera.",
+        mriDetails: "Atrofia cortical y cerebelosa global.",
+        clinicalStatus: "Soporte paliativo.",
+        pathophysiology: "Desmielinización central y periférica total.",
+        neuroExamDetail: {
+          mentalStatus: "Sin conciencia de entorno.",
+          cranialNerves: "Ausencia de reflejos bulbares.",
+          motorSystem: "Flacidez terminal o rigidez fija.",
+          reflexes: "Pérdida de reflejos tendinosos."
+        }
       }
     ]
   },
@@ -160,49 +204,62 @@ export const DISEASES: Record<LeukodystrophyType, DiseaseData> = {
     name: 'MLD',
     fullName: 'Leucodistrofia Metacromática',
     color: '#10b981',
-    genetics: "Deficiencia de Arilsulfatasa A (ARSA) en 22q13. Depósito de sulfátidos.",
-    riskFactors: "Marcha equina en la familia o neuropatía motora inexplicable.",
-    biomarkers: "Sulfátidos elevados en orina. ARSA baja en leucocitos.",
-    historyBase: "Niño (12-24 meses) que tras caminar inicia con caídas frecuentes y marcha inestable.",
-    warningSigns: [
-      "Marcha equina (de puntillas).",
-      "Colelitiasis pediátrica.",
-      "Arreflexia (pérdida de reflejos).",
-      "Regresión del lenguaje."
+    genetics: "Deficiencia de Arilsulfatasa A (ARSA) en 22q13. Autosómica recesiva.",
+    molecularMechanism: "Acumulación de sulfátidos en vainas de mielina (SNC y SNP), riñón y vesícula biliar. Los sulfátidos causan desestabilización de la membrana de mielina.",
+    riskFactors: "1 en 40,000 - 160,000 nacimientos.",
+    biomarkers: "Actividad de ARSA < 10%. Sulfátidos elevados en orina.",
+    historyBase: "Niño de 12-24 meses que inicia con caídas frecuentes y marcha inestable.",
+    warningSigns: ["Marcha de puntitas (equino)", "Colelitiasis pediátrica", "Regresión del lenguaje", "Arreflexia"],
+    complications: ["Colecistitis no litiásica", "Cuadriplejía espástica", "Demencia"],
+    treatment: "Terapia génica ex-vivo (Libmeldy) en pre-sintomáticos. HSCT en formas juveniles.",
+    prognosis: "Fallecimiento 5-10 años tras inicio en forma infantil.",
+    differential: ["S. Guillain-Barré crónico", "Ataxia de Friedreich", "Gangliosidosis GM1"],
+    references: [
+      { source: "GeneReviews", title: "Arylsulfatase A Deficiency", url: "https://www.ncbi.nlm.nih.gov/books/NBK1130/" },
+      { source: "Radiopaedia", title: "Metachromatic leukodystrophy", url: "https://radiopaedia.org/articles/metachromatic-leukodystrophy" }
     ],
-    complications: [
-      "Colecistitis no litiásica.",
-      "Cuadriplejía espástica.",
-      "Demencia infantil.",
-      "Úlceras de decúbito."
-    ],
-    treatment: "Terapia génica (Libmeldy) en pre-sintomáticos. HSCT en formas juveniles seleccionadas.",
-    prognosis: "Forma infantil: Fallecimiento entre 5 y 10 años tras diagnóstico.",
-    differential: ["Guillain-Barré crónico", "Ataxia de Friedreich"],
     stages: [
       {
-        timeLabel: "Fase Inicial",
-        symptoms: "Debilidad distal en pies, inestabilidad truncal.",
-        physicalExam: "Pérdida de reflejos rotulianos (neuropatía SNP).",
+        timeLabel: "Fase Neuropática",
+        symptoms: "Debilidad de extremidades inferiores, tropiezos.",
+        physicalExam: "Marcha equina, hipotonía distal.",
         mriDetails: "Hiperintensidad T2 periventricular posterior.",
-        clinicalStatus: "Afectación mixta SNC/SNP.",
-        pathophysiology: "Sulfátidos destruyen mielina central y periférica."
+        clinicalStatus: "Fase de diagnóstico diferencial con SNP.",
+        pathophysiology: "Desmielinización periférica inicial.",
+        neuroExamDetail: {
+          mentalStatus: "Cognición preservada.",
+          cranialNerves: "Normales.",
+          motorSystem: "Debilidad distal (pies).",
+          reflexes: "Arreflexia rotuliana y aquilea (clínica SNP)."
+        }
       },
       {
-        timeLabel: "Fase Intermedia",
-        symptoms: "Incapacidad de bipedestación, disartria progresiva.",
-        physicalExam: "Aparición de signos piramidales (Babinski +).",
-        mriDetails: "Patrón tigroide o de leopardo característico.",
-        clinicalStatus: "Declive cognitivo-motor acelerado.",
-        pathophysiology: "Desmielinización central confluente."
+        timeLabel: "Fase Cerebral",
+        symptoms: "Incapacidad para pararse, ataxia truncal.",
+        physicalExam: "Signo de Babinski presente, espasticidad.",
+        mriDetails: "Patrón 'tigroide' (preservación perivascular de mielina).",
+        clinicalStatus: "Progresión rápida motora.",
+        pathophysiology: "Desmielinización central confluente.",
+        neuroExamDetail: {
+          mentalStatus: "Disartria, lentitud cognitiva.",
+          cranialNerves: "Posible nystagmus.",
+          motorSystem: "Hipertonía piramidal superpuesta a debilidad SNP.",
+          reflexes: "Babinski presente a pesar de arreflexia (signo mixto)."
+        }
       },
       {
         timeLabel: "Fase Avanzada",
-        symptoms: "Mutismo, disfagia, pérdida visual.",
-        physicalExam: "Contracturas fijas, ceguera cortical.",
-        mriDetails: "Atrofia masiva, pérdida de diferenciación tisular.",
-        clinicalStatus: "Dependencia total paliativa.",
-        pathophysiology: "Pérdida masiva de soporte axonal."
+        symptoms: "Disfagia severa, pérdida de contacto.",
+        physicalExam: "Posturas fijas, atrofia óptica.",
+        mriDetails: "Atrofia masiva 'cerebro en filo de cuchillo'.",
+        clinicalStatus: "Paliativos.",
+        pathophysiology: "Muerte axonal secundaria masiva.",
+        neuroExamDetail: {
+          mentalStatus: "Demencia profunda.",
+          cranialNerves: "Pérdida de audición central.",
+          motorSystem: "Parálisis total.",
+          reflexes: "Ausentes."
+        }
       }
     ]
   },
@@ -211,49 +268,62 @@ export const DISEASES: Record<LeukodystrophyType, DiseaseData> = {
     name: 'PMD',
     fullName: 'Enfermedad de Pelizaeus-Merzbacher',
     color: '#f59e0b',
-    genetics: "Alteraciones en el gen PLP1 (Xq22). Hipomielinización ligada al X.",
-    riskFactors: "Varones con nystagmus neonatal persistente.",
-    biomarkers: "Estudio genético confirmatorio de PLP1.",
-    historyBase: "Lactante varón con nystagmus pendular desde el mes de vida y debilidad axial severa.",
-    warningSigns: [
-      "Nystagmus pendular neonatal.",
-      "Estridor inspiratorio.",
-      "Ataxia de cabeza y manos.",
-      "Hipotonía axial marcada."
+    genetics: "Alteraciones en PLP1 (duplicación, deleción o mutación puntual). Xq22.",
+    molecularMechanism: "La proteína proteolipídica (PLP1) es la proteína más abundante de la mielina. El exceso de PLP1 (duplicación) es tóxico para el retículo endoplásmico del oligodendrocito.",
+    riskFactors: "Varones exclusivamente (Ligada al X).",
+    biomarkers: "Pruebas genéticas de PLP1 (MLPA para duplicaciones).",
+    historyBase: "Lactante varón con nystagmus ocular pendular desde las primeras semanas de vida.",
+    warningSigns: ["Nystagmus pendular neonatal", "Estridor inspiratorio", "Ataxia de cabeza", "Hipotonía axial"],
+    complications: ["Escoliosis severa", "Luxación de cadera", "Fallo respiratorio central"],
+    treatment: "Soporte vital, manejo de espasticidad, cirugía ortopédica.",
+    prognosis: "Supervivencia hasta 4ta-5ta década en formas clásicas.",
+    differential: ["Nystagmus idiopático", "Hipomielinización con hipodoncia (HHDL)"],
+    references: [
+      { source: "GeneReviews", title: "Pelizaeus-Merzbacher Disease", url: "https://www.ncbi.nlm.nih.gov/books/NBK1182/" },
+      { source: "NORD", title: "Pelizaeus-Merzbacher Disease", url: "https://rarediseases.org/rare-diseases/pelizaeus-merzbacher-disease/" }
     ],
-    complications: [
-      "Escoliosis severa.",
-      "Disfunción del habla.",
-      "Luxación de cadera.",
-      "Fallo respiratorio restrictivo."
-    ],
-    treatment: "Manejo de soporte multidisciplinario. Toxina botulínica. Cirugía ortopédica.",
-    prognosis: "Forma clásica: Supervivencia hasta 4ta-5ta década. Forma connatal: Grave.",
-    differential: ["Síndrome de nystagmus idiopático", "Parálisis cerebral"],
     stages: [
       {
-        timeLabel: "Lactancia",
-        symptoms: "Movimientos oculares rápidos, debilidad de cuello.",
-        physicalExam: "Hipotonía 'bebé trapo', nystagmus rotatorio.",
-        mriDetails: "Ausencia de señal de mielina en T1 (se ve gris).",
-        clinicalStatus: "Diagnóstico diferencial con causas oculares.",
-        pathophysiology: "Oligodendrocitos incapaces de madurar mielina."
+        timeLabel: "Etapa Neonatal",
+        symptoms: "Movimientos oculares rápidos, estridor.",
+        physicalExam: "Nystagmus rotatorio, pobre control cefálico.",
+        mriDetails: "Ausencia de mielina: T1 no muestra señal brillante.",
+        clinicalStatus: "Hipomielinización congénita.",
+        pathophysiology: "Oligodendrocitos incapaces de sintetizar mielina madura.",
+        neuroExamDetail: {
+          mentalStatus: "Alerta.",
+          cranialNerves: "Nystagmus pendular horizontal/rotatorio.",
+          motorSystem: "Hipotonía axial 'bebé trapo'.",
+          reflexes: "Aumentados."
+        }
       },
       {
-        timeLabel: "Niñez",
-        symptoms: "Desarrollo motor muy lento, ataxia, temblor.",
-        physicalExam: "Temblor intencional, retraso del lenguaje.",
-        mriDetails: "Señal T2 hiperintensa homogénea estable.",
-        clinicalStatus: "Fase de rehabilitación física máxima.",
-        pathophysiology: "Déficit crónico de aislamiento axonal."
+        timeLabel: "Etapa de Infancia",
+        symptoms: "Retraso motor global, ataxia.",
+        physicalExam: "Temblor de intención, lenguaje lento.",
+        mriDetails: "Cerebro 'fetal' (sin mielinización progresiva).",
+        clinicalStatus: "Desarrollo motor estancado.",
+        pathophysiology: "Aislamiento axonal defectuoso.",
+        neuroExamDetail: {
+          mentalStatus: "Déficit intelectual leve-moderado.",
+          cranialNerves: "Nystagmus disminuye con la edad.",
+          motorSystem: "Ataxia de tronco y miembros.",
+          reflexes: "Hiperreflexia espástica."
+        }
       },
       {
-        timeLabel: "Adolescencia",
-        symptoms: "Espasticidad predominante, pérdida de funciones.",
-        physicalExam: "Escoliosis, contracturas en tijera.",
-        mriDetails: "Atrofia cortical y del tronco encefálico.",
-        clinicalStatus: "Manejo ortopédico.",
-        pathophysiology: "Degeneración axonal por falta de soporte trófico."
+        timeLabel: "Etapa Adulta",
+        symptoms: "Espasticidad predominante, contracturas.",
+        physicalExam: "Signos piramidales severos, escoliosis.",
+        mriDetails: "Atrofia cortical e hiposeñal persistente.",
+        clinicalStatus: "Dependencia funcional.",
+        pathophysiology: "Degeneración retrógrada axonal.",
+        neuroExamDetail: {
+          mentalStatus: "Cognición relativamente estable.",
+          cranialNerves: "Habla escandida (ataxia-espástica).",
+          motorSystem: "Cuadriplejía espástica en tijeras.",
+          reflexes: "Exaltados, Babinski bilateral."
+        }
       }
     ]
   }
@@ -273,131 +343,5 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
     options: ["Leucodistrofia Metacromática", "Enfermedad de Krabbe", "Enfermedad de Pelizaeus-Merzbacher", "X-ALD"],
     correctAnswer: 1,
     explanation: "La irritabilidad extrema y la elevación de Psicosina son patognomónicas de la Enfermedad de Krabbe en su forma infantil temprana."
-  },
-  {
-    id: 3,
-    question: "El patrón 'tigroide' o de 'piel de leopardo' en la RMN es una clave diagnóstica para:",
-    options: ["Adrenoleucodistrofia", "Enfermedad de Krabbe", "Leucodistrofia Metacromática", "Enfermedad de Pelizaeus-Merzbacher"],
-    correctAnswer: 2,
-    explanation: "Se debe a la preservación relativa de mielina en los espacios perivasculares (venas medulares), dando ese aspecto estriado."
-  },
-  {
-    id: 4,
-    question: "El nystagmus pendular neonatal y el estridor laríngeo son signos característicos de:",
-    options: ["Enfermedad de Pelizaeus-Merzbacher", "MLD Juvenil", "X-ALD Cerebral", "Enfermedad de Canavan"],
-    correctAnswer: 0,
-    explanation: "El nystagmus pendular en las primeras semanas de vida es casi universal en pacientes con mutaciones en PLP1 (PMD)."
-  },
-  {
-    id: 5,
-    question: "Un varón de 7 años con diagnóstico reciente de TDAH que presenta hiperpigmentación cutánea debe evaluarse para:",
-    options: ["Síndrome de Cushing", "Adrenoleucodistrofia Ligada al X", "Enfermedad de Addison idiopática", "Leucodistrofia Metacromática"],
-    correctAnswer: 1,
-    explanation: "La coexistencia de síntomas neurocognitivos y evidencia clínica de insuficiencia suprarrenal (hiperpigmentación) es altamente sugestiva de X-ALD."
-  },
-  {
-    id: 6,
-    question: "¿En qué cromosoma se localiza el gen ARSA, cuya deficiencia causa la Leucodistrofia Metacromática?",
-    options: ["Xq28", "14q31", "22q13", "Xq22"],
-    correctAnswer: 2,
-    explanation: "El gen ARSA se localiza en el cromosoma 22q13.31. Es un dato crítico para la asesoría genética y diagnóstico molecular."
-  },
-  {
-    id: 7,
-    question: "La 'ventana terapéutica' para el trasplante de células madre (HSCT) en la enfermedad de Krabbe infantil se cierra generalmente a los:",
-    options: ["10 días de vida", "30 días de vida", "6 meses de vida", "12 meses de vida"],
-    correctAnswer: 1,
-    explanation: "Para ser efectivo, el HSCT en Krabbe infantil debe realizarse en pacientes pre-sintomáticos, idealmente antes de los 30 días de vida."
-  },
-  {
-    id: 8,
-    question: "¿Cuál es la fisiopatología molecular primaria de la Adrenoleucodistrofia Ligada al X?",
-    options: ["Acumulación de sulfátidos en vainas de mielina", "Falla en el transporte de VLCFA al peroxisoma", "Deficiencia de mielinización por defecto de PLP1", "Acumulación de macrófagos globoides"],
-    correctAnswer: 1,
-    explanation: "La mutación en ABCD1 impide que la proteína ALDP transporte VLCFA al peroxisoma para su beta-oxidación."
-  },
-  {
-    id: 9,
-    question: "La afectación del sistema nervioso periférico (SNP) con arreflexia y aumento de proteínas en LCR es típico de:",
-    options: ["PMD", "MLD", "X-ALD", "Esclerosis Múltiple"],
-    correctAnswer: 1,
-    explanation: "MLD afecta tanto la mielina central como la periférica, resultando en una neuropatía desmielinizante con arreflexia."
-  },
-  {
-    id: 10,
-    question: "En la RMN de un paciente con X-ALD cerebral, el realce con gadolinio en la periferia de la lesión indica:",
-    options: ["Cavitación inactiva", "Ruptura activa de la barrera hematoencefálica e inflamación", "Calcificación distrófica", "Proceso de remielinización"],
-    correctAnswer: 1,
-    explanation: "El realce indica el frente de desmielinización activa e inflamación mediada por microglía/macrófagos."
-  },
-  {
-    id: 11,
-    question: "¿Qué escala se utiliza universalmente para cuantificar la severidad de la afectación por RMN en X-ALD?",
-    options: ["Escala de Glasgow", "Escala de Loes", "Escala de Kurtzke (EDSS)", "Escala de Apgar"],
-    correctAnswer: 1,
-    explanation: "La escala de Loes (0-34 puntos) evalúa la extensión y localización de las lesiones de sustancia blanca en X-ALD."
-  },
-  {
-    id: 12,
-    question: "Un hallazgo radiológico de hipointensidad en los tálamos en secuencias T2 es sugestivo de:",
-    options: ["X-ALD", "Enfermedad de Krabbe", "Enfermedad de Pelizaeus-Merzbacher", "MLD"],
-    correctAnswer: 1,
-    explanation: "En la enfermedad de Krabbe infantil temprana, se observa frecuentemente hipointensidad talámica en T2."
-  },
-  {
-    id: 13,
-    question: "La colecistitis no litiásica (inflamación de vesícula sin piedras) es una complicación sistémica descrita en:",
-    options: ["Krabbe", "PMD", "Leucodistrofia Metacromática", "X-ALD"],
-    correctAnswer: 2,
-    explanation: "La acumulación de sulfátidos en el epitelio de la vesícula biliar en MLD puede causar engrosamiento y colecistitis."
-  },
-  {
-    id: 14,
-    question: "La distinción principal entre Leucodistrofias Desmielinizantes e Hipomielinizantes en RMN se basa en:",
-    options: ["La presencia de nystagmus", "La estabilidad del déficit de mielina en estudios seriados (T1 y T2)", "La edad de inicio únicamente", "La respuesta al trasplante"],
-    correctAnswer: 1,
-    explanation: "Las hipomielinizantes (como PMD) muestran un déficit persistente y estable de mielina, mientras que las desmielinizantes muestran progresión rápida."
-  },
-  {
-    id: 15,
-    question: "¿Cuál es el compuesto neurotóxico que causa la muerte de oligodendrocitos en la Enfermedad de Krabbe?",
-    options: ["Ácido fitánico", "Psicosina", "Sulfátido", "Ácido docosanoico"],
-    correctAnswer: 1,
-    explanation: "La psicosina (galactosil-esfingosina) se acumula masivamente ante la falta de GALC y es letal para las células productoras de mielina."
-  },
-  {
-    id: 16,
-    question: "El estridor laríngeo o inspiratorio en PMD se debe a:",
-    options: ["Obstrucción mecánica por moco", "Disfunción de los nervios craneales/tronco cerebral", "Infecciones recurrentes", "Afectación de la placa neuromuscular"],
-    correctAnswer: 1,
-    explanation: "Es un signo de disfunción del tronco encefálico (vías motoras centrales) común en formas connatal o severas de PMD."
-  },
-  {
-    id: 17,
-    question: "En MLD, la deficiencia de qué cofactor puede simular la deficiencia de ARSA?",
-    options: ["Vitamina B12", "Sapocina B", "Vitamina B1", "Biotina"],
-    correctAnswer: 1,
-    explanation: "La proteína activadora de la arilsulfatasa A (Sapocina B) es necesaria para la función enzimática; su defecto causa MLD con ARSA normal."
-  },
-  {
-    id: 18,
-    question: "¿Cuál es la herencia de la Enfermedad de Pelizaeus-Merzbacher?",
-    options: ["Autosómica Recesiva", "Autosómica Dominante", "Ligada al X", "Mitocondrial"],
-    correctAnswer: 2,
-    explanation: "PMD es causada por mutaciones en PLP1, ubicado en el cromosoma Xq22, por lo que afecta principalmente a varones."
-  },
-  {
-    id: 19,
-    question: "Un Loes Score de 15 en un paciente con X-ALD cerebral indica:",
-    options: ["Afectación leve, candidato ideal para trasplante", "Afectación moderada-avanzada, alto riesgo para trasplante", "Cerebro normal", "Recuperación espontánea"],
-    correctAnswer: 1,
-    explanation: "Generalmente, un Loes Score > 9 indica una afectación cerebral avanzada donde el éxito del trasplante disminuye drásticamente."
-  },
-  {
-    id: 20,
-    question: "La terapia génica ex-vivo con células hematopoyéticas (Libmeldy) está aprobada actualmente para:",
-    options: ["X-ALD en adultos", "MLD pre-sintomática o sintomática temprana", "Krabbe terminal", "Todos los tipos de leucodistrofia"],
-    correctAnswer: 1,
-    explanation: "Atidarsagene autotemcel (Libmeldy) ha demostrado alta eficacia en MLD infantil/juvenil antes de que ocurra un daño motor irreversible."
   }
 ];

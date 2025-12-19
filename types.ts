@@ -14,6 +14,18 @@ export interface ProgressionStage {
   mriDetails: string;
   clinicalStatus: string;
   pathophysiology: string;
+  neuroExamDetail: {
+    mentalStatus: string;
+    cranialNerves: string;
+    motorSystem: string;
+    reflexes: string;
+  };
+}
+
+export interface Reference {
+  source: string;
+  title: string;
+  url: string;
 }
 
 export interface DiseaseData {
@@ -22,6 +34,7 @@ export interface DiseaseData {
   fullName: string;
   color: string;
   genetics: string;
+  molecularMechanism: string;
   riskFactors: string;
   biomarkers: string;
   historyBase: string;
@@ -31,6 +44,7 @@ export interface DiseaseData {
   prognosis: string;
   differential: string[];
   stages: ProgressionStage[];
+  references: Reference[];
 }
 
 export interface QuizQuestion {
