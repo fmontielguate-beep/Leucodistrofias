@@ -1,0 +1,7 @@
+{
+  "name": "LeukoEd PRO: Master in Pediatric Leukodystrophy",
+  "description": "Expert-level clinical simulation for pediatric residents. Advanced natural history modules for X-ALD, Krabbe, MLD, and PMD.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
