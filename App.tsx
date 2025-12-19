@@ -33,7 +33,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col medical-bg selection:bg-sky-200 selection:text-sky-900">
-      <header className="bg-white border-b border-slate-200 p-3 sticky top-0 z-[60] shadow-sm">
+      <header className="bg-white border-b border-slate-200 p-3 sticky top-0 z-[70] shadow-sm">
         <div className="max-w-[1800px] mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-sky-900 rounded-lg flex items-center justify-center text-white shadow-lg">
@@ -61,11 +61,8 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* Sección Superior: Se asegura que el contenedor principal NO recorte los pop-ups laterales */}
       <div className="flex-grow flex flex-col lg:flex-row w-full max-w-[1920px] mx-auto overflow-visible relative">
-        
-        {/* Nav Lateral Izquierdo: Eliminado overflow-y-auto para evitar recortes */}
-        <nav className="w-full lg:w-80 flex-shrink-0 border-r border-slate-200 bg-white sticky top-[61px] h-auto lg:h-[65vh] z-50 hidden lg:block overflow-visible">
+        <nav className="w-full lg:w-80 flex-shrink-0 border-r border-slate-200 bg-white sticky top-[61px] h-auto lg:h-[65vh] z-[60] hidden lg:block overflow-visible">
           <div className="p-3 overflow-visible h-full flex flex-col">
             <h3 className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-3">Especialidades</h3>
             <div className="flex-grow overflow-visible">
@@ -74,7 +71,6 @@ const App: React.FC = () => {
           </div>
         </nav>
 
-        {/* Área Central: Canvas (z-index menor para que el pop-up pase por encima) */}
         <main className="flex-grow relative bg-slate-50 flex flex-col h-[350px] lg:h-[65vh] overflow-hidden z-10 border-x border-slate-100">
           <div className="absolute top-3 left-3 z-10 flex gap-2">
             <button 
@@ -101,7 +97,6 @@ const App: React.FC = () => {
           </div>
         </main>
 
-        {/* Ventana Lateral Derecha (InfoPanel): z-index alto para capas de información */}
         <aside className="w-full lg:w-[550px] flex-shrink-0 bg-white shadow-2xl z-40 overflow-hidden h-[500px] lg:h-[65vh]">
           <InfoPanel 
             disease={selectedDisease} 
@@ -113,7 +108,6 @@ const App: React.FC = () => {
         </aside>
       </div>
 
-      {/* Sección Inferior: Quiz */}
       <section className="bg-slate-900 py-8 px-4 z-20 relative">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-6">
@@ -127,7 +121,6 @@ const App: React.FC = () => {
 
       <Chatbot />
 
-      {/* Navegación Mobile */}
       <div className="lg:hidden fixed bottom-6 left-6 right-6 z-40">
          <div className="bg-white shadow-2xl rounded-2xl p-2.5 flex justify-around border border-slate-200">
             <button 
